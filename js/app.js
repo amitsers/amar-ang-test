@@ -1,4 +1,4 @@
-var app = angular.module('tutorialWebApp', [
+var app = angular.module('amarelaWebApp', [
   'ngRoute'
 ]);
 
