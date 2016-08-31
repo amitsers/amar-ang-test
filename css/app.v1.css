@@ -15255,3 +15255,7 @@ ul.nav.bg.clearfix {
 section#bjax-target {
     margin-top: 47px;
 }
+
+.pointer-link {
+    cursor: pointer !important;
+}
