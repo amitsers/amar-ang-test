@@ -1,4 +1,9 @@
 app.controller("AmarElaController", function(PlayerService, AmarEla, $scope, $rootScope) {
+
+    $scope.toggleInBasket = function() {
+        console.log('toggle in basket');
+      };
+
     // $scope.test = [1,2,3,4,5,6,7];
 	AmarEla.GetTopSongs({numRec: 5}).success(function(res) {
         $scope.test = res;

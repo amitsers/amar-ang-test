@@ -14,8 +14,7 @@ app.directive("jplayer", ['$window', 'PlayerService', function ($window, PlayerS
             $window.jplayerCss = "#playlist";
             // Set up a playlist
 
-            var jPlaylist = angular.element("#playlist").jPlayer();
-            console.log(jPlaylist);
+            var jPlaylist = angular.element("#playlist");
             
             // Add the player service to the scope so we can watch stuff!
             scope.PlayerService = PlayerService;
@@ -38,18 +37,25 @@ app.directive("jplayer", ['$window', 'PlayerService', function ($window, PlayerS
                     loop: true,
 
               });
-                
+                var playlist = '';
+                var playlistFinal = '';
                 if (value) {
                     for(i=0; i<value.length; i++) {
                         if(value[i].currentTrack) {
                             $window.myPlaylist.play(i);
+                            playlist = '<li class="jp-playlist-current"><div><a href="javascript:;" class="jp-playlist-item-remove">×</a><a href="javascript:;" class="jp-playlist-item jp-playlist-current" tabindex="1">'+value[i].title+'<span class="jp-artist"> - '+value[i].artist+'</span></a></div></li>';
+                        } else {
+                            playlist = '<li class="jp-playlist-current"><div><a href="javascript:;" class="jp-playlist-item-remove">×</a><a href="javascript:;" class="jp-playlist-item" tabindex="1">'+value[i].title+'<span class="jp-artist"> - '+value[i].artist+'</span></a></div></li>';
                         }
-                    }
-                    
+                        playlistFinal = playlist + playlistFinal;
+                    }                    
                     // jPlayer.jPlayer('setMedia', {
                     //     mp3: value.songUrl,
                     //     title: value.songName 
                     // }).jPlayer('play');
+
+                    var playlistFull = '<ul class="dropdown-menu aside-xl dker" style="display: block;">'+playlistFinal+'</ul>';
+                    jPlaylist.append(playlistFull);
                 }
             });
 
