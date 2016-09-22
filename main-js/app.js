@@ -9,6 +9,7 @@ app.config(['$routeProvider', function ($routeProvider) {
   $routeProvider
     // Home
     .when("/", {templateUrl: "partials/index.html"})
+    .when("/album/:albumId", {templateUrl: "partials/songs.html", controller: "AmarElaController"})
 
     // Pages
     .when("/about", {templateUrl: "partials/about.html"})

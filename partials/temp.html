@@ -1,4 +1,14 @@
-<div>
+<!-- <div>
     <div test-case condition="dynamicCondition">Hello</div>
     <input type="checkbox" ng-model="dynamicCondition"/> Condition 
-</div>
+</div> -->
+
+<button ng-click="focusinControl.takeTablet()">Call directive function</button>
+    <p>
+      <b>In controller scope:</b>
+      {{focusinControl}}
+    </p>
+    <p>
+      <b>In directive scope:</b>
+      <focusin control="focusinControl"></focusin>
+    </p>

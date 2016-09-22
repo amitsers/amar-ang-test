@@ -19,8 +19,7 @@ app.directive("jplayer", ['$window', 'PlayerService', function ($window, PlayerS
             // Add the player service to the scope so we can watch stuff!
             scope.PlayerService = PlayerService;
             // When the Current track (on the service) changes - we want to tell jPlayer to play that new song
-            scope.$watch('PlayerService.CurrentTrack', function (value) {   
-                console.log(value);
+            scope.$watch('PlayerService.CurrentTrack', function (value) {                   
                 $window.myPlaylist = new jPlayerPlaylist({
                     jPlayer: "#jplayer_N",
                     cssSelectorAncestor: "#jp_container_N"
@@ -45,9 +44,9 @@ app.directive("jplayer", ['$window', 'PlayerService', function ($window, PlayerS
                             $window.myPlaylist.play(i);
                             playlist = '<li class="jp-playlist-current"><div><a href="javascript:;" class="jp-playlist-item-remove">×</a><a href="javascript:;" class="jp-playlist-item jp-playlist-current" tabindex="1">'+value[i].title+'<span class="jp-artist"> - '+value[i].artist+'</span></a></div></li>';
                         } else {
-                            playlist = '<li class="jp-playlist-current"><div><a href="javascript:;" class="jp-playlist-item-remove">×</a><a href="javascript:;" class="jp-playlist-item" tabindex="1">'+value[i].title+'<span class="jp-artist"> - '+value[i].artist+'</span></a></div></li>';
+                            playlist = '<li><div><a href="javascript:;" class="jp-playlist-item-remove">×</a><a href="javascript:;" class="jp-playlist-item" tabindex="1">'+value[i].title+'<span class="jp-artist"> - '+value[i].artist+'</span></a></div></li>';
                         }
-                        playlistFinal = playlist + playlistFinal;
+                        playlistFinal = playlistFinal + playlist;
                     }                    
                     // jPlayer.jPlayer('setMedia', {
                     //     mp3: value.songUrl,
@@ -94,7 +93,6 @@ app.service("PlayerService", [function () {
     this.IsPaused = false;
     this.CurrentTrack = null;
     this.HasNext = false;
-    // this.playList = null;
     
     this.Play = function (tracks, songId) {
         var data;
@@ -116,6 +114,7 @@ app.service("PlayerService", [function () {
         
 
         this.CurrentTrack = playlist;
+        console.log(playlist);
         this.IsPaused = false;
 
         if(tracks.length > 1) {

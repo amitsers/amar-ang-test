@@ -39,25 +39,52 @@
 
 
 
-app.controller("Test", function($scope, $rootScope) {
-    $scope.dynamicCondition = false;
+// app.controller("Test", function($scope, $rootScope) {
+//     $scope.dynamicCondition = false;
+// })
+
+// .directive('testCase', function () {
+//     return {
+//         restrict: 'A',
+//         scope: {
+//             'condition': '='
+//         },
+//         link: function (scope, element, attrs) {
+//             scope.$watch('condition', function(condition){
+//                 if(condition){
+//                     element.css('color', 'red');
+//                 }
+//                 else{
+//                     element.css('color', 'black');
+//                 };
+//             });
+//         }
+//     }
+// });
+
+
+app.controller('Test', function($scope) {
+  $scope.focusinControl = {};
 })
 
-.directive('testCase', function () {
-    return {
-        restrict: 'A',
-        scope: {
-            'condition': '='
-        },
-        link: function (scope, element, attrs) {
-            scope.$watch('condition', function(condition){
-                if(condition){
-                    element.css('color', 'red');
-                }
-                else{
-                    element.css('color', 'black');
-                };
-            });
-        }
+.directive('focusin', function factory() {
+  return {
+    restrict: 'E',
+    replace: true,
+    template: '<div>A:{{internalControl}}</div>',
+    scope: {
+      control: '='
+    },
+    link: function(scope, element, attrs) {
+      scope.internalControl = scope.control || {};
+      scope.internalControl.takenTablets = 0;
+      scope.internalControl.takeTablet = function() {
+        console.log(3);
+        scope.internalControl.takenTablets += 1;
+      }
     }
+  };
 });
+
+
+// http://stackoverflow.com/questions/16881478/how-to-call-a-method-defined-in-an-angularjs-directive
