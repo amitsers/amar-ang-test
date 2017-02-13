@@ -19,7 +19,10 @@ app.controller("AmarElaController", function(PlayerService, AmarEla, $scope, $ro
     }
 
     if($route.current) {
-        if($location.path().split('/')[1] == 'album') {
+        if($location.path().split('/')[1] == 'search') {
+            console.log(2222222);
+        }
+        else if($location.path().split('/')[1] == 'album') {
             var albumId = $route.current.params.albumId;
             $scope.haha = false;
             AmarEla.GetAlbumSongsByAlbumId({id: albumId}).success(function(res) {
