@@ -11,6 +11,14 @@
     <!--[if lt IE 9]> <script src="js/html5shiv.js"></script> <script src="js/respond.min.js"></script> <script src="js/excanvas.js"></script> <![endif]-->
 </head>
 <body ng-app="amarelaWebApp" ng-controller="AmarElaController">
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appId=939043852867359";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
@@ -20,10 +28,10 @@
 
 <ang-view ng-view></ang-view>
 
-<div >
+<!-- <div >
 	<jplayer></jplayer>
 </div>
-
+ -->
 <!-- Vendor: Javascripts -->
 <script src="js/app.v1.js"></script>
 <script src="js/app.plugin.js"></script>
@@ -42,6 +50,7 @@
 <script src="main-js/config.js"></script>
 <script src="main-js/services.js"></script>
 <script src="main-js/player-ng-wrapper.js"></script>
+<script src="main-js/facebook-comment.js"></script>
 <script src="main-js/controllers/test.js"></script>
 <script src="main-js/controllers/AmarElaController.js"></script>
 

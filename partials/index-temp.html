@@ -1,0 +1,131 @@
+    <section class="vbox">
+        <div ng-include="'partials/header.html'"></div>
+        <section>
+            <section class="hbox stretch">
+                <!-- .aside -->
+                <aside class="bg-black dk nav-xs aside hidden-print" id="nav">
+                    <section class="vbox">
+                        <section class="w-f-md scrollable">
+                            <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2">
+                                <!-- nav -->
+                                <div ng-include="'partials/left-sidebar.html'"></div>
+                                <!-- / nav -->
+                            </div>
+                        </section>
+                        
+                    </section>
+                </aside>
+                <!-- /.aside -->
+                <section id="content">
+                    <section class="hbox stretch">
+                        <section>
+                            <section class="vbox">
+                                <section class="scrollable padder-lg w-f-md" id="bjax-target"> <a href="#" class="pull-right text-muted m-t-lg" data-toggle="class:fa-spin"><i class="icon-refresh i-lg inline" id="refresh"></i></a>
+                                    <h2 class="font-thin m-b">Discover <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px"> <span class="bar1 a1 bg-primary lter"></span> <span class="bar2 a2 bg-info lt"></span> <span class="bar3 a3 bg-success"></span> <span class="bar4 a4 bg-warning dk"></span> <span class="bar5 a5 bg-danger dker"></span> </span></h2>
+                                    <div class="row row-sm">
+                                        <span ng-repeat="album in albums">
+                                            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                                                <div class="item pointer-link" ng-click="redirectTo('album/' + album.id)">
+                                                    <div class="pos-rlt">
+                                                        <div class="item-overlay opacity r r-2x bg-black">
+                                                            <div class="center text-center m-t-n"> 
+                                                                <a href="#"><i class="icon-control-play i-2x"></i></a> 
+                                                            </div>
+                                                            <div class="bottom padder m-b-sm">
+                                                                <a href="#" class="pull-right"> <i class="fa fa-heart-o"></i> </a>
+                                                                <a href="#"> <i class="fa fa-plus-circle"></i> </a>
+                                                            </div>
+                                                        </div>
+                                                        <a ng-href="#/album/{{album.id}}">
+                                                            <!-- <img ng-src="{{album.albumArt}}" class="r r-2x img-full" alt="{{album.albumName}}"> -->
+                                                            <img src="images/p1.jpg" alt="" class="r r-2x img-full">
+                                                        </a>
+                                                    </div>
+                                                    <div class="padder-v"> <a ng-href="#/album/{{album.id}}" class="text-ellipsis">{{album.albumName}}</a> <a ng-href="#/album/{{album.id}}" class="text-ellipsis text-xs text-muted">{{album.type}}</a> </div>
+                                                </div>
+                                            </div>
+                                        </span>
+                                        
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-7">
+                                            <h3 class="font-thin">Random Songs</h3>
+                                            <div class="row row-sm">
+                                                <span ng-repeat="track in randomSongs">
+                                                    <div class="col-xs-6 col-sm-3">
+                                                        <div class="item pointer-link" ng-click="playRandomSong(track.id)">
+                                                            <div class="pos-rlt">
+                                                                <div class="item-overlay opacity r r-2x bg-black">
+                                                                    <div class="center text-center m-t-n"> <a target="_self"><i class="fa fa-play-circle i-2x"></i></a> </div>
+                                                                </div>
+                                                                <!-- <a href="#"><img src="images/a2.png" alt="" class="r r-2x img-full"></a> -->
+                                                                <a target="_self"><img ng-src="{{track.albumArt}}" class="r r-2x img-full" alt="{{track.albumName}}"></a>
+                                                            </div>
+                                                            <div class="padder-v"> 
+                                                                <a class="text-ellipsis" target="_self">{{track.songName}}</a> 
+                                                                <a target="_self" class="text-ellipsis text-xs text-muted">{{track.albumName}}</a> </div>
+                                                        </div>
+                                                    </div>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <h3 class="font-thin">Top Songs</h3>
+                                            <span ng-repeat="track in topFive">
+                                                <div class="list-group bg-white list-group-lg no-bg auto" ng-click="playTopFive(track.id)">
+                                                    <a class="list-group-item clearfix pointer-link" target="_self"> 
+                                                        <span class="pull-right h2 text-muted m-l">{{$index+1}}</span> 
+                                                        <span class="pull-left thumb-sm avatar m-r"> 
+                                                            <!-- <img src="images/a4.png" alt="...">  -->
+                                                            <img ng-src="{{track.albumArt}}" class="r r-2x img-full" alt="{{track.albumName}}">
+                                                        </span> 
+                                                        <span class="clear"> 
+                                                            <span>{{track.songName}}</span> 
+                                                            <small class="text-muted clear text-ellipsis">
+                                                                {{track.artistName}}
+                                                            </small> 
+                                                        </span>
+                                                    </a>                                                
+                                                </div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="row m-t-lg m-b-lg">
+                                        <div class="col-sm-6">
+                                            <div class="bg-primary wrapper-md r">
+                                                <a href="#"> <span class="h4 m-b-xs block"><i class=" icon-user-follow i-lg"></i> Login or Create account</span> <span class="text-muted">Save and share your playlist with your friends when you log in or create an account.</span> </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="bg-black wrapper-md r">
+                                                <a href="http://amarela.kaakai.in/app/"> <span class="h4 m-b-xs block"><i class="icon-cloud-download i-lg"></i> Download our app</span> <span class="text-muted">Get the apps for desktop and mobile to start listening music at anywhere and anytime.</span> </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </section>
+                        </section>
+                        <!-- side content -->
+                        <aside class="aside-md bg-light dk" id="sidebar">
+                            <section class="vbox animated fadeInRight">
+                                <section class="w-f-md scrollable hover">
+                                    <div class="right-sidebar-space"></div>
+                                    <div id="fb-comment-box" dyn-fb-comment-box
+                                            page-href="https://kaakai.in/page/1"
+                                            numposts="5"
+                                            colorscheme="light">
+                                    </div>
+                                </section>
+                            </section>
+                        </aside>
+                        <!-- / side content -->
+                    </section>
+                    <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+                </section>
+            </section>
+        </section>
+    </section>
+    <!-- Bootstrap -->
+    <!-- App -->
+    
+    

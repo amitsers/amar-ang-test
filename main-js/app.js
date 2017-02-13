@@ -10,6 +10,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     // Home
     .when("/", {templateUrl: "partials/index.html"})
     .when("/album/:albumId", {templateUrl: "partials/songs.html", controller: "AmarElaController"})
+    .when("/albums/:type", {templateUrl: "partials/albums.html", controller: "AmarElaController"})
 
     // Pages
     .when("/about", {templateUrl: "partials/about.html"})
@@ -18,8 +19,6 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/services", {templateUrl: "partials/services.html", controller: "PageCtrl"})
     .when("/contact", {templateUrl: "partials/contact.html", controller: "PageCtrl"})
     // Blog
-    .when("/blog", {templateUrl: "partials/blog.html", controller: "AmarElaController"})
-    .when("/blog/post", {templateUrl: "partials/blog_item.html", controller: "BlogCtrl"})
     .when("/ela", {templateUrl: "partials/ela.html", controller: "AmarElaController"})
     .when("/temp", {templateUrl: "partials/temp.html", controller: "Test"})
     // else 404

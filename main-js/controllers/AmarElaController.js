@@ -1,10 +1,19 @@
-app.controller("AmarElaController", function(PlayerService, AmarEla, $scope, $rootScope, $route, $location) {
+app.controller("AmarElaController", function(PlayerService, AmarEla, $scope, $rootScope, $route, $location, $routeParams) {
+    $scope.loadSearchItems = function (search) {
+        AmarEla.SearchOnAmarEla({text: search, limit: 10}).success(function(resp) {
+            $scope.searchText = resp;
+            console.log(resp);
+        }).error(function(error) {
+            console.log(error);
+        });
+    }
+
 
     $scope.redirectTo = function(url) {
         $location.path(url);
     }
 
-    $scope.play = function(tracks, songId) {        
+    $scope.play = function(tracks, songId) {
         $scope.currentPlaylist = tracks;
         PlayerService.Play(tracks, songId);
     }
@@ -15,7 +24,6 @@ app.controller("AmarElaController", function(PlayerService, AmarEla, $scope, $ro
             $scope.haha = false;
             AmarEla.GetAlbumSongsByAlbumId({id: albumId}).success(function(res) {
                 $scope.albumSongs = res;
-                console.log(res);
                 var type = res[0].type;
                 if(res[0].type = 'Unknown') {
                     type = 'Modern';
@@ -27,7 +35,6 @@ app.controller("AmarElaController", function(PlayerService, AmarEla, $scope, $ro
                 }
                 AmarEla.GetAlbumDetailsTypeWiseAPI(GetrelatedAlbumParams).success(function(resp) {
                     $scope.relatedAlbums = resp.lists;
-                    console.log(resp.lists);
                 }).error(function(error) {
                     console.log(error);
                 });
@@ -38,6 +45,20 @@ app.controller("AmarElaController", function(PlayerService, AmarEla, $scope, $ro
             $scope.playFromSongPlaylist = function(songId){
                 $scope.play($scope.albumSongs, songId);
             }
+        } else if($location.path().split('/')[1] == 'albums') {
+            var albumType = $route.current.params.type;
+            $scope.albumType = albumType;
+            var GetAlbumDetailsTypeWiseAPIParams = {
+                type: albumType,
+                numRec: 10000
+            }
+
+            AmarEla.GetAlbumDetailsTypeWiseAPI(GetAlbumDetailsTypeWiseAPIParams).success(function(res) {
+                $scope.allAlbums = res.lists;
+                console.log(res.lists);
+            }).error(function(error) {
+                console.log(error);
+            });
         }
     } else {
         AmarEla.GetTopSongs({numRec: 5}).success(function(res) {

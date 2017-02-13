@@ -37,5 +37,15 @@ app.factory('AmarEla', function($http, CONFIG) {
             $http.defaults.headers.common.Authorization = 'Basic';
             return $http.get(url);
         },
+
+        SearchOnAmarEla: function(data) {
+            var params = {
+                text: data.text,
+                limit: data.limit
+            };
+            var url = CONFIG.serverDetails.host + CONFIG.serverDetails.basepath + "search.php?api_key="+CONFIG.serverDetails.api_key + "&search="+params.text + "&limit="+params.limit;
+            $http.defaults.headers.common.Authorization = 'Basic';
+            return $http.get(url);
+        }
     };
 });

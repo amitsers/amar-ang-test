@@ -3694,6 +3694,7 @@ input[type="button"].btn-block {
 
 .open>.dropdown-menu {
     display: block;
+    background-color: #f7fafa;
 }
 
 .open>a {
@@ -5510,10 +5511,12 @@ a.thumbnail.active {
 .list-group-item {
     position: relative;
     display: block;
-    padding: 10px 15px;
+    /*padding: 10px 15px;*/
     margin-bottom: -1px;
-    background-color: #fff;
-    border: 1px solid #ddd;
+    /*background-color: #fff;*/
+    /*border: 1px solid #ddd;*/
+    padding: 0px 15px;
+    margin-bottom: -1px;
 }
 
 .list-group-item:first-child {
@@ -11412,7 +11415,7 @@ body.container {
         width: 300px;
     }
     .aside-xl {
-        width: 360px;
+        width: 660px;
     }
     .aside-xxl {
         width: 480px;
@@ -14459,7 +14462,8 @@ a.bg-light:focus {
 }
 
 .m-b-none {
-    margin-bottom: 0;
+    margin-bottom: 0px;
+    margin-top: 4px;
 }
 
 .m-b-xxs {
@@ -15258,4 +15262,18 @@ section#bjax-target {
 
 .pointer-link {
     cursor: pointer !important;
+}
+
+.capitalize {text-transform:capitalize;}
+
+.right-sidebar-space {
+    padding: 30px;
+}
+
+header .list-group-item.media {
+    margin-top: -12px;
+}
+
+header .search-title {
+    margin-bottom: 10px;
 }

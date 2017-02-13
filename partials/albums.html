@@ -1,0 +1,58 @@
+    <section class="vbox">
+        <div ng-include="'partials/header.html'"></div>
+        <section>
+            <section class="hbox stretch">
+                <!-- .aside -->
+                <aside class="bg-black dk nav-xs aside hidden-print" id="nav">
+                    <section class="vbox">
+                        <section class="w-f-md scrollable">
+                            <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2">
+                                <!-- nav -->
+                                <div ng-include="'partials/left-sidebar.html'"></div>
+                                <!-- / nav -->
+                            </div>
+                        </section>
+                        
+                    </section>
+                </aside>
+                <!-- /.aside -->
+                <section id="content">
+                    <section class="vbox">
+                        <section class="w-f-md" id="bjax-target">
+                            <section class="hbox stretch">
+                                <!-- / side content -->
+                                <section>
+                                    <section class="vbox">
+                                        <section class="scrollable padder-lg">
+                                            <h2 class="font-thin m-b capitalize">{{albumType}}</h2>
+                                            <div class="row row-sm">
+                                                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" ng-repeat="album in allAlbums">
+                                                    <div class="item pointer-link" ng-click="redirectTo('album/' + album.id)">
+                                                        <div class="pos-rlt">
+                                                            <div class="item-overlay opacity r r-2x bg-black">
+                                                                <div class="center text-center m-t-n"> <a href="http://flatfull.com/themes/musik/genres.html#"><i class="fa fa-play-circle i-2x"></i></a> </div>
+                                                            </div>
+                                                            <a href="http://flatfull.com/themes/musik/track-detail.html">
+                                                                <!-- <img src="./genre_files/m1.jpg" alt="" class="r r-2x img-full"> -->
+                                                                <img ng-src="{{album.albumArt}}" alt="" class="r r-2x img-full">
+                                                            </a>
+                                                        </div>
+                                                        <div class="padder-v"> <a href="http://flatfull.com/themes/musik/track-detail.html" data-bjax="" data-target="#bjax-target" data-el="#bjax-el" data-replace="true" class="text-ellipsis">{{album.albumName}}</a> <a href="http://flatfull.com/themes/musik/track-detail.html" data-bjax="" data-target="#bjax-target" data-el="#bjax-el" data-replace="true" class="text-ellipsis text-xs text-muted">{{album.fbDesc}}</a> </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </section>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                    <a href="http://flatfull.com/themes/musik/genres.html#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+                </section>
+            </section>
+        </section>
+    </section>
+    <!-- Bootstrap -->
+    <!-- App -->
+    
+    
