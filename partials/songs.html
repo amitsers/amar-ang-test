@@ -34,9 +34,7 @@
                                             <ul class="list-group list-group-lg no-radius no-border no-bg m-t-n-xxs m-b-none auto">
                                                 <li class="list-group-item pointer-link" ng-repeat="song in albumSongs">
                                                     <div class="pull-right m-l"> 
-                                                        <a href="http://flatfull.com/themes/musik/listen.html#" class="m-r-sm"><i class="icon-cloud-download"></i></a> 
-                                                        <a href="http://flatfull.com/themes/musik/listen.html#" class="m-r-sm"><i class="icon-plus"></i></a> 
-                                                        <a href="http://flatfull.com/themes/musik/listen.html#"><i class="icon-close"></i></a> 
+                                                        <a ng-href="{{song.songUrl}}" class="m-r-sm" download><i class="fa fa-download"></i></a>
                                                     </div>
                                                     <a ng-click="playFromSongPlaylist(song.id)" target="_self" class="jp-play-me m-r-sm pull-left"> <i class="icon-control-play text"></i> <i class="icon-control-pause text-active"></i> </a>
                                                     <div ng-click="playFromSongPlaylist(song.id)" class="clear text-ellipsis"> <span>{{song.songName}}</span> <span class="text-muted"> -- {{song.artistName}}</span> </div>

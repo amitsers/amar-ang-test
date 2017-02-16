@@ -55,6 +55,7 @@ app.controller("AmarElaController", function(PlayerService, AmarEla, $scope, $ro
             });
     
             $scope.playFromSongPlaylist = function(songId){
+                console.log($scope.albumSongs);
                 $scope.play($scope.albumSongs, songId);
             }
         } else if($location.path().split('/')[1] == 'albums') {

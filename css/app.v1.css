@@ -10751,7 +10751,11 @@ a:hover .caret-white {
 }
 
 .input-s-lg {
-    width: 250px;
+    width: 500px;
+}
+
+div#search-box {
+    width: 500px;
 }
 
 .input-lg {
