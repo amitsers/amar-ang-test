@@ -11,7 +11,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/album/:albumId", {templateUrl: "partials/songs.html", controller: "AmarElaController"})
     .when("/albums/:type", {templateUrl: "partials/albums.html", controller: "AmarElaController"})
     .when("/ela", {templateUrl: "partials/ela.html", controller: "AmarElaController"})
-    .when("/search", {templateUrl: "partials/ela.html", controller: "AmarElaController"})
+    .when("/search/:searchText", {templateUrl: "partials/search.html", controller: "AmarElaController"})
 
 
     .when("/temp", {templateUrl: "partials/temp.html", controller: "Test"})

@@ -13,15 +13,14 @@
         <div class="form-group">
             <div class="input-group" class="hidden-xs" id="aaaaa"> 
                 <span class="input-group-btn"> <button type="submit" class="btn btn-sm bg-white btn-icon rounded"><i class="fa fa-search"></i></button> </span>
-                <!-- <input type="text" class="form-control input-sm no-border rounded" ng-keyup="searchAll()" placeholder="Search songs, albums...">  -->
-                <input id="input-search" ng-model="mysearch" class="form-control input-sm no-border rounded dropdown-toggle lt" name="mysearch" ng-keyup="loadSearchItems(mysearch)" placeholder="Search songs, albums..." data-toggle="dropdown"/>
+                <input id="input-search" ng-model="mysearch" class="form-control input-sm no-border rounded dropdown-toggle lt" name="mysearch" ng-keyup="loadSearchItems(mysearch)" placeholder="Search songs, albums and more..." data-toggle="dropdown"/>
                 <section class="dropdown-menu aside-xl animated fadeInUp">
                     <section class="panel bg-white">
-                        <div class="panel-heading b-light bg-light"> <strong>You have <span class="count">2</span> notifications</strong> </div>
+                        <div class="panel-heading b-light bg-light"> <strong>Search Result</strong> </div>
                         <div class="col-md-6">
                             <div class="list-group list-group-alt">
                                 <div class="panel-footer text-sm search-title"> 
-                                    <a href="#notes" data-toggle="class:show animated fadeInRight"><strong>Songs</strong></a>
+                                    <a href="#notes" data-toggle="class:show animated fadeInRight"><strong ng-if="mysearch">Songs</strong></a>
                                 </div>
 
                                 <span ng-repeat="song in searchText.songs">
@@ -33,7 +32,7 @@
                         <div class="col-md-6">
                             <div class="list-group list-group-alt">
                                 <div class="panel-footer text-sm search-title"> 
-                                    <a href="#notes" data-toggle="class:show animated fadeInRight"><strong>Albums</strong></a> 
+                                    <a href="#notes" data-toggle="class:show animated fadeInRight"><strong ng-if="mysearch">Albums</strong></a> 
                                 </div>
 
                                 <span ng-repeat="album in searchText.albums">
@@ -43,7 +42,7 @@
                             </div>
                         </div>
                         <div class="panel-footer text-sm search-title text-center">
-                            <a href="#search" data-toggle="class:show animated fadeInRight center">Click here to view more</a>
+                            <a href="#/search/{{mysearch}}"><span ng-if="mysearch">View all results for {{mysearch}}</span></a>
                         </div>
                     </section>
                 </section>

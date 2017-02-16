@@ -1,0 +1,98 @@
+    <section class="vbox">
+        <div ng-include="'partials/header.html'"></div>
+        <section>
+            <section class="hbox stretch">
+                <!-- .aside -->
+                <aside class="bg-black dk nav-xs aside hidden-print" id="nav">
+                    <section class="vbox">
+                        <section class="w-f-md scrollable">
+                            <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2">
+                                <!-- nav -->
+                                <div ng-include="'partials/left-sidebar.html'"></div>
+                                <!-- / nav -->
+                            </div>
+                        </section>
+                        
+                    </section>
+                </aside>
+                <!-- /.aside -->
+                <section id="content">
+                    <section class="vbox">
+                        <section class="w-f-md">
+                            <section class="hbox stretch bg-black dker">
+                                <!-- side content -->
+                                <aside class="col-sm-5 no-padder" id="sidebar">
+                                    <section class="vbox animated fadeInUp">
+                                        <section class="scrollable">
+                                            <br/><br/><br/>
+                                            <ul class="list-group list-group-lg no-radius no-border no-bg m-t-n-xxs m-b-none auto">
+                                                <li class="list-group-item pointer-link">
+                                                    <div lass="clear text-ellipsis"> <span>Songs</span></div>
+                                                </li>
+                                                <li class="list-group-item pointer-link" ng-repeat="song in searchResult.songs">
+                                                    <div class="pull-right m-l"> 
+                                                        <a href="http://flatfull.com/themes/musik/listen.html#" class="m-r-sm"><i class="icon-cloud-download"></i></a> 
+                                                        <a href="http://flatfull.com/themes/musik/listen.html#" class="m-r-sm"><i class="icon-plus"></i></a> 
+                                                        <a href="http://flatfull.com/themes/musik/listen.html#"><i class="icon-close"></i></a> 
+                                                    </div>
+                                                    <a ng-click="playFromSongSearch(song.id)" target="_self" class="jp-play-me m-r-sm pull-left"> <i class="icon-control-play text"></i> <i class="icon-control-pause text-active"></i> </a>
+                                                    <div ng-click="playFromSongSearch(song.id)" class="clear text-ellipsis"> <span>{{song.songName}}</span> <span class="text-muted"> -- {{song.albumName}}</span> </div>
+                                                </li>
+                                            </ul>
+                                        </section>
+                                    </section>
+                                </aside>
+                                <!-- / side content -->
+                                <section class="col-sm-4 no-padder bg">
+                                    <section class="vbox">
+                                        <section class="scrollable hover">
+                                            <br/><br/><br/>
+                                            <ul class="list-group list-group-lg no-bg auto m-b-none m-t-n-xxs">
+                                                <li class="list-group-item clearfix">
+                                                    <span ng-click="redirectTo()" class="pointer-link">
+                                                        <a class="clear"> <span class="block text-ellipsis">Albums</span></a>
+                                                    </span>
+                                                </li>
+                                                <li class="list-group-item clearfix" ng-repeat="album in searchResult.albums">
+                                                    <span ng-click="redirectTo('album/' + album.albumId)" class="pointer-link">
+                                                        <a class="jp-play-me pull-right m-t-sm m-l text-md"> <i class="icon-control-play text"></i> <i class="icon-control-pause text-active"></i> </a>
+                                                        <a class="pull-left thumb-sm m-r"> <img ng-src="{{album.albumArt}}" alt="..."> </a>
+                                                        <a class="clear"> <span class="block text-ellipsis">{{album.albumName}}</span> <small class="text-muted">{{album.desc}}</small> </a>
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="col-sm-3 no-padder lt">
+                                    <section class="vbox">
+                                        <section class="scrollable hover">
+                                            <div class="m-t-n-xxs">
+                                                <div class="item pos-rlt">
+                                                    <a href="http://flatfull.com/themes/musik/listen.html#" class="item-overlay active opacity wrapper-md font-xs"> <span class="block h3 font-bold text-info">Find</span> <span class="text-muted">Search the music you like</span> <span class="bottom wrapper-md block">- <i class="icon-arrow-right i-lg pull-right"></i></span> </a>
+                                                    <a href="http://flatfull.com/themes/musik/listen.html#"> 
+                                                    <img class="img-full" src="images/m40.jpg" alt="..."> </a>
+                                                </div>
+                                                <div class="item pos-rlt">
+                                                    <a href="http://flatfull.com/themes/musik/listen.html#" class="item-overlay active opacity wrapper-md font-xs text-right"> <span class="block h3 font-bold text-warning text-u-c">Listen</span> <span class="text-muted">Find the peace in your heart</span> <span class="bottom wrapper-md block"><i class="icon-arrow-right i-lg pull-left"></i> -</span> </a>
+                                                    <a href="http://flatfull.com/themes/musik/listen.html#"> <img class="img-full" src="images/m41.jpg" alt="..."> </a>
+                                                </div>
+                                                <div id="fb-comment-box" dyn-fb-comment-box
+                                                    page-href="https://kaakai.in/page/1"
+                                                    numposts="5"
+                                                    colorscheme="dark">
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </section>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                    <a href="http://flatfull.com/themes/musik/listen.html#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+                </section>
+            </section>
+        </section>
+    </section>
+    <!-- Bootstrap -->
+    <!-- App -->

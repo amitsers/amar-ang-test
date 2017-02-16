@@ -1,8 +1,7 @@
 app.controller("AmarElaController", function(PlayerService, AmarEla, $scope, $rootScope, $route, $location, $routeParams) {
     $scope.loadSearchItems = function (search) {
-        AmarEla.SearchOnAmarEla({text: search, limit: 10}).success(function(resp) {
+        AmarEla.SearchOnAmarEla({text: search, limit: 1}).success(function(resp) {
             $scope.searchText = resp;
-            console.log(resp);
         }).error(function(error) {
             console.log(error);
         });
@@ -20,7 +19,17 @@ app.controller("AmarElaController", function(PlayerService, AmarEla, $scope, $ro
 
     if($route.current) {
         if($location.path().split('/')[1] == 'search') {
-            console.log(2222222);
+            var searchText = $route.current.params.searchText;
+            AmarEla.SearchOnAmarEla({text: searchText, limit: 1000}).success(function(resp) {
+                $scope.searchResult = resp;
+                console.log( $scope.searchResult);
+            }).error(function(error) {
+                console.log(error);
+            });
+
+            $scope.playFromSongSearch = function(songId){
+                $scope.play($scope.searchResult.songs, songId);
+            }
         }
         else if($location.path().split('/')[1] == 'album') {
             var albumId = $route.current.params.albumId;
